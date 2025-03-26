@@ -1,16 +1,21 @@
+from os import getenv
+
 import disnake
 from disnake.ext import commands
-from config import settings
+from dotenv import load_dotenv
+
 
 class EasyDiscordBot(commands.Bot):
     def __init__(self):
         super().__init__(
-	    command_prefix = settings['PREFIX'], 
-	    intents = disnake.Intents.all()
+    	    command_prefix=getenv("COMMAND_PREFIX"),
+    	    intents=disnake.Intents.all(),
         )
 
     async def on_ready(self):
         print("Запущен!")
 
+load_dotenv()
+
 bot = EasyDiscordBot()
-bot.run(settings['TOKEN'])
+bot.run(getenv("DISCORD_TOKEN"))
