@@ -12,6 +12,5 @@ bot = commands.Bot(
 async def on_ready(self):
     print("Запущен!")
 
-bot = EasyDiscordBot()
 bot.load_extensions("cogs")
 bot.run(settings['TOKEN'])
